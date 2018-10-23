@@ -9,6 +9,8 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   };`
 
+
+// variables to represent the API endpoint
 const DEFAULT_QUERY = 'reddit';
 const PATH_BASE = 'https://www.reddit.com/subreddits';
 const PATH_SEARCH = '/search.json?';
@@ -18,7 +20,7 @@ const PATH_Q = 'q=';
 class App extends Component {
 
   state = {
-    searchKey: '',
+    // searchKey: '',
     searchTerm: DEFAULT_QUERY,
     listings: null,
     error: null,
@@ -27,7 +29,7 @@ class App extends Component {
 
   componentDidMount = () => {
     const { searchTerm } = this.state;
-    this.setState({ searchKey: searchTerm });
+    // this.setState({ searchKey: searchTerm });
     this.fetchSearchTopStories(searchTerm);
   }
 
@@ -41,16 +43,13 @@ class App extends Component {
       .catch(error => this.setState({ error }));
   }
 
-  onSearchChange = event => {
-    this.setState({ searchTerm: event.target.value })
-  }
+  onSearchChange = event => this.setState({ searchTerm: event.target.value })
 
   onSearchSubmit = e => {
     const { searchTerm, searchKey } = this.state;
     e.preventDefault();
-    this.setState({ searchKey: searchTerm });
-
-    this.fetchSearchTopStories(searchKey)
+    // this.setState({ searchKey: searchTerm })
+    this.fetchSearchTopStories(searchTerm)
   }
 
   render() {
