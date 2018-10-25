@@ -9,6 +9,6 @@ export const FooterContainer = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-    // position: absolute;
     bottom: 0;
+    grid-row: 4;
 `;
