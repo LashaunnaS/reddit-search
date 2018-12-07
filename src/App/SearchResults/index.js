@@ -1,8 +1,8 @@
-import { SRGrid, SearchBlock, SearchBar, Button, ListTable } from './SearchResultsStyle';
+import { SRGrid, SearchBar, SearchDiv, Button, ListTable } from './SearchResultsStyle';
 import React, { Component, Fragment } from 'react';
 
 // variables to represent the API endpoint
-const DEFAULT_QUERY = 'reddit';
+const DEFAULT_QUERY = 'Travel';
 const PATH_BASE = 'https://www.reddit.com/subreddits';
 const PATH_SEARCH = '/search.json?';
 const PATH_Q = 'q=';
@@ -46,9 +46,9 @@ class SearchResults extends Component {
         return (
             <SRGrid>
                 {!isLoaded ?
-                    <div style={{ height: '84vh' }}>
+                    <Fragment >
                         <h1>Be with you shortly...</h1>
-                    </div>
+                    </Fragment>
                     :
                     <Fragment>
                         <Search
@@ -56,8 +56,8 @@ class SearchResults extends Component {
                             onChange={this.onSearchChange}
                             onSubmit={this.onSearchSubmit}
                         >
-                            Search
-                            </Search>
+                            <i class="material-icons" style={{ color: '#2ec4b6' }}>search</i>
+                        </Search>
                         <Table listings={this.state.listings} />
                     </Fragment>
                 }
@@ -67,7 +67,7 @@ class SearchResults extends Component {
 }
 
 const Search = ({ value, onChange, onSubmit, children }) =>
-    <SearchBlock onSubmit={onSubmit}>
+    <SearchDiv onSubmit={onSubmit}>
         <SearchBar
             type="text"
             value={value}
@@ -76,7 +76,7 @@ const Search = ({ value, onChange, onSubmit, children }) =>
         <Button type="submit">
             {children}
         </Button>
-    </SearchBlock>
+    </SearchDiv>
 
 const Table = ({ listings }) => {
     return (

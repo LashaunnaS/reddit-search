@@ -8,6 +8,8 @@ const GlobalStyle = createGlobalStyle`
   html, body{
     height: 100%;
     margin: 0;
+    background-color: #011627;
+    color: #fdfffc;
   };`
 
 class App extends Component {
